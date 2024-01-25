@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plpservice-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: plpservice
+  template:
+    metadata:
+      labels:
+        app: plpservice
+    spec:
+      containers:
+      - name: plpservice
+        image: pavankumarsangisetti/plpservice:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
